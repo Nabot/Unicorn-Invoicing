@@ -180,8 +180,30 @@ class UserController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Request $request, User $user): RedirectResponse
     {
-        //
+        $companyId = $request->user()->company_id;
+        
+        // Ensure user belongs to the same company
+        if ($user->company_id !== $companyId) {
+            abort(403, 'Unauthorized action.');
+        }
+
+        // Prevent users from deleting themselves
+        if ($user->id === $request->user()->id) {
+            return redirect()->route('users.index')
+                ->with('error', 'You cannot delete your own account.');
+        }
+
+        // Check if user has created invoices (optional - you may want to prevent deletion)
+        if ($user->createdInvoices()->exists()) {
+            return redirect()->route('users.index')
+                ->with('error', 'Cannot delete user with existing invoices. Please reassign invoices first.');
+        }
+
+        $user->delete();
+
+        return redirect()->route('users.index')
+            ->with('success', 'User deleted successfully.');
     }
 }
