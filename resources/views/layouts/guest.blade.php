@@ -18,7 +18,7 @@
         <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100 dark:bg-gray-900">
             <div class="mb-6">
                 <a href="/" class="flex justify-center">
-                    <img src="{{ asset('images/logo.jpg') }}" alt="{{ config('app.name', 'Laravel') }}" class="h-28 w-auto max-w-md">
+                    <img src="{{ asset('images/logo.jpg') }}" alt="{{ config('app.name', 'Laravel') }}" class="h-[4.55rem] w-auto max-w-md">
                 </a>
             </div>
 
