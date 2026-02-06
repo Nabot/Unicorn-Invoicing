@@ -50,6 +50,36 @@
                         <x-alert type="error" dismissible>{{ session('error') }}</x-alert>
                     @endif
 
+                    <!-- User Limit Info and New User Button -->
+                    <div class="mb-4 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+                        <div class="text-sm text-gray-600 dark:text-gray-400">
+                            <span class="font-medium">Users:</span> 
+                            <span class="{{ $currentUserCount >= 3 ? 'text-red-600 dark:text-red-400 font-bold' : '' }}">
+                                {{ $currentUserCount }} / {{ \App\Http\Controllers\UserController::MAX_USERS_PER_COMPANY }}
+                            </span>
+                            @if($currentUserCount >= 3)
+                                <span class="ml-2 text-red-600 dark:text-red-400">(Limit reached)</span>
+                            @endif
+                        </div>
+                        @if($canAddMore)
+                            <a href="{{ route('users.create') }}" 
+                               class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-sm touch-manipulation transition-all hover:shadow-lg flex items-center gap-2">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
+                                </svg>
+                                {{ __('New User') }}
+                            </a>
+                        @else
+                            <button disabled 
+                                    class="bg-gray-400 text-white font-bold py-2 px-4 rounded text-sm cursor-not-allowed flex items-center gap-2 opacity-50">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
+                                </svg>
+                                {{ __('New User') }}
+                            </button>
+                        @endif
+                    </div>
+
                     <div class="overflow-x-auto">
                         <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
                             <thead class="bg-gray-50 dark:bg-gray-900">

@@ -39,7 +39,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('invoices/{invoice}/payments/{payment}', [PaymentController::class, 'destroy'])->name('payments.destroy');
 
     // Users
-    Route::resource('users', UserController::class)->only(['index']);
+    Route::resource('users', UserController::class)->only(['index', 'create', 'store']);
 
     // Reports (hidden from navigation but routes still exist)
     Route::get('reports', [ReportController::class, 'index'])->name('reports.index');

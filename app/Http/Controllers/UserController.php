@@ -3,11 +3,17 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rules;
 use Illuminate\View\View;
+use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
+    const MAX_USERS_PER_COMPANY = 3;
+
     /**
      * Display a listing of the resource.
      */
@@ -45,23 +51,64 @@ class UserController extends Controller
         $perPage = $request->get('per_page', 15);
         $users = $query->paginate($perPage)->withQueryString();
 
-        return view('users.index', compact('users', 'sortBy'));
+        // Get current user count
+        $currentUserCount = User::where('company_id', $companyId)->count();
+        $canAddMore = $currentUserCount < self::MAX_USERS_PER_COMPANY;
+
+        return view('users.index', compact('users', 'sortBy', 'currentUserCount', 'canAddMore'));
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Request $request): View
     {
-        //
+        $companyId = $request->user()->company_id;
+        $currentUserCount = User::where('company_id', $companyId)->count();
+
+        if ($currentUserCount >= self::MAX_USERS_PER_COMPANY) {
+            return redirect()->route('users.index')
+                ->with('error', 'Maximum user limit reached. You can only have ' . self::MAX_USERS_PER_COMPANY . ' users per company.');
+        }
+
+        $roles = Role::all();
+        return view('users.create', compact('roles'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
-        //
+        $companyId = $request->user()->company_id;
+        $currentUserCount = User::where('company_id', $companyId)->count();
+
+        // Check user limit
+        if ($currentUserCount >= self::MAX_USERS_PER_COMPANY) {
+            return redirect()->route('users.index')
+                ->with('error', 'Maximum user limit reached. You can only have ' . self::MAX_USERS_PER_COMPANY . ' users per company.');
+        }
+
+        $validated = $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'role' => ['required', 'exists:roles,name'],
+        ]);
+
+        $user = User::create([
+            'name' => $validated['name'],
+            'email' => $validated['email'],
+            'password' => Hash::make($validated['password']),
+            'company_id' => $companyId,
+        ]);
+
+        // Assign role
+        $role = Role::findByName($validated['role']);
+        $user->assignRole($role);
+
+        return redirect()->route('users.index')
+            ->with('success', 'User created successfully.');
     }
 
     /**
