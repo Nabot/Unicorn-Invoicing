@@ -195,15 +195,46 @@ class UserController extends Controller
                 ->with('error', 'You cannot delete your own account.');
         }
 
-        // Check if user has created invoices (optional - you may want to prevent deletion)
-        if ($user->createdInvoices()->exists()) {
-            return redirect()->route('users.index')
-                ->with('error', 'Cannot delete user with existing invoices. Please reassign invoices first.');
+        // Find an admin user in the same company to reassign invoices
+        $adminUser = User::where('company_id', $companyId)
+            ->whereHas('roles', function($query) {
+                $query->where('name', 'Admin');
+            })
+            ->where('id', '!=', $user->id) // Don't select the user being deleted
+            ->first();
+
+        // If no admin found, use the current user (the one performing the deletion)
+        if (!$adminUser) {
+            $adminUser = $request->user();
+        }
+
+        // Reassign all invoices created by this user to the admin user
+        $invoiceCount = $user->createdInvoices()->count();
+        if ($invoiceCount > 0) {
+            $user->createdInvoices()->update(['created_by' => $adminUser->id]);
+        }
+
+        // Reassign all payments recorded by this user to the admin user
+        $paymentCount = $user->recordedPayments()->count();
+        if ($paymentCount > 0) {
+            $user->recordedPayments()->update(['created_by' => $adminUser->id]);
         }
 
         $user->delete();
 
+        $message = 'User deleted successfully.';
+        if ($invoiceCount > 0 || $paymentCount > 0) {
+            $reassigned = [];
+            if ($invoiceCount > 0) {
+                $reassigned[] = $invoiceCount . ' invoice(s)';
+            }
+            if ($paymentCount > 0) {
+                $reassigned[] = $paymentCount . ' payment(s)';
+            }
+            $message .= ' ' . implode(' and ', $reassigned) . ' reassigned to ' . $adminUser->name . '.';
+        }
+
         return redirect()->route('users.index')
-            ->with('success', 'User deleted successfully.');
+            ->with('success', $message);
     }
 }
