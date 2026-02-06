@@ -123,17 +123,58 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Request $request, User $user): View
     {
-        //
+        $companyId = $request->user()->company_id;
+        
+        // Ensure user belongs to the same company
+        if ($user->company_id !== $companyId) {
+            abort(403, 'Unauthorized action.');
+        }
+
+        $roles = Role::all();
+        $user->load('roles');
+        
+        return view('users.edit', compact('user', 'roles'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, User $user): RedirectResponse
     {
-        //
+        $companyId = $request->user()->company_id;
+        
+        // Ensure user belongs to the same company
+        if ($user->company_id !== $companyId) {
+            abort(403, 'Unauthorized action.');
+        }
+
+        $validated = $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:users,email,' . $user->id],
+            'password' => ['nullable', 'confirmed', Rules\Password::defaults()],
+            'role' => ['required', 'exists:roles,name'],
+        ]);
+
+        $user->update([
+            'name' => $validated['name'],
+            'email' => $validated['email'],
+        ]);
+
+        // Update password if provided
+        if (!empty($validated['password'])) {
+            $user->update([
+                'password' => Hash::make($validated['password']),
+            ]);
+        }
+
+        // Update role
+        $role = Role::findByName($validated['role']);
+        $user->syncRoles([$role]);
+
+        return redirect()->route('users.index')
+            ->with('success', 'User updated successfully.');
     }
 
     /**
