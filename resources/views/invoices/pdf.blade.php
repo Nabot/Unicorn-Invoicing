@@ -12,24 +12,24 @@
         }
         body {
             font-family: 'DejaVu Sans', Arial, sans-serif;
-            font-size: 12px;
+            font-size: 9px;
             color: #333;
-            padding: 20px;
-            line-height: 1.6;
+            padding: 15px;
+            line-height: 1.4;
         }
         .header {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 30px;
-            border-bottom: 4px solid #2563eb;
-            padding-bottom: 25px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #2563eb;
+            padding-bottom: 15px;
         }
         .company-info {
             flex: 1;
         }
         .company-info h1 {
-            font-size: 28px;
-            margin-bottom: 8px;
+            font-size: 18px;
+            margin-bottom: 5px;
             color: #1a1a1a;
             font-weight: bold;
         }
@@ -37,19 +37,19 @@
             text-align: right;
         }
         .invoice-info h2 {
-            font-size: 24px;
-            margin-bottom: 12px;
+            font-size: 16px;
+            margin-bottom: 8px;
             color: #1a1a1a;
             font-weight: bold;
         }
         .status-badge {
             display: inline-block;
-            padding: 6px 12px;
-            border-radius: 4px;
-            font-size: 11px;
+            padding: 4px 8px;
+            border-radius: 3px;
+            font-size: 8px;
             font-weight: bold;
             text-transform: uppercase;
-            margin-bottom: 8px;
+            margin-bottom: 5px;
         }
         .status-draft {
             background-color: #e5e7eb;
@@ -76,22 +76,22 @@
             color: #6b7280;
         }
         .bill-to {
-            margin: 25px 0;
-            padding: 18px;
+            margin: 15px 0;
+            padding: 12px;
             background-color: #f9fafb;
-            border-left: 5px solid #2563eb;
-            border-radius: 4px;
+            border-left: 3px solid #2563eb;
+            border-radius: 3px;
         }
         .bill-to h3 {
-            font-size: 16px;
-            margin-bottom: 12px;
+            font-size: 10px;
+            margin-bottom: 8px;
             color: #1a1a1a;
             font-weight: bold;
         }
         table {
             width: 100%;
             border-collapse: collapse;
-            margin: 25px 0;
+            margin: 15px 0;
             page-break-inside: auto;
         }
         thead {
@@ -104,14 +104,17 @@
         }
         th, td {
             border: 1px solid #e5e7eb;
-            padding: 12px;
+            padding: 6px 8px;
             text-align: left;
         }
         th {
             font-weight: bold;
-            font-size: 11px;
+            font-size: 8px;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
+            letter-spacing: 0.3px;
+        }
+        td {
+            font-size: 9px;
         }
         tbody tr {
             page-break-inside: avoid;
@@ -127,30 +130,30 @@
             text-align: right;
         }
         .totals {
-            margin-top: 30px;
+            margin-top: 20px;
             margin-left: auto;
-            width: 380px;
+            width: 300px;
         }
         .totals table {
             margin: 0;
-            border: 2px solid #e5e7eb;
-            border-radius: 4px;
+            border: 1px solid #e5e7eb;
+            border-radius: 3px;
         }
         .totals td {
             border: none;
-            padding: 10px 15px;
+            padding: 6px 10px;
             border-bottom: 1px solid #e5e7eb;
         }
         .totals .label {
             text-align: right;
             font-weight: normal;
-            font-size: 12px;
+            font-size: 9px;
             color: #6b7280;
         }
         .totals .value {
             text-align: right;
             font-weight: 600;
-            font-size: 12px;
+            font-size: 9px;
             color: #1f2937;
         }
         .totals .subtotal-row {
@@ -160,35 +163,35 @@
             background-color: #f9fafb;
         }
         .totals .total-row {
-            border-top: 3px solid #1f2937;
-            border-bottom: 3px solid #1f2937;
-            font-size: 16px;
-            padding: 15px;
+            border-top: 2px solid #1f2937;
+            border-bottom: 2px solid #1f2937;
+            font-size: 11px;
+            padding: 8px 10px;
             background-color: #f3f4f6;
         }
         .totals .total-row .label {
-            font-size: 16px;
+            font-size: 11px;
             font-weight: bold;
             color: #1f2937;
         }
         .totals .total-row .value {
-            font-size: 18px;
+            font-size: 12px;
             font-weight: bold;
             color: #1f2937;
         }
         .totals .balance-row {
             background-color: #fef3c7;
             font-weight: bold;
-            font-size: 14px;
-            border: 2px solid #fbbf24;
+            font-size: 10px;
+            border: 1px solid #fbbf24;
         }
         .totals .balance-row .label {
-            font-size: 14px;
+            font-size: 10px;
             font-weight: bold;
             color: #92400e;
         }
         .totals .balance-row .value {
-            font-size: 16px;
+            font-size: 11px;
             font-weight: bold;
             color: #92400e;
         }
@@ -205,32 +208,32 @@
             color: #dc2626;
         }
         .footer {
-            margin-top: 50px;
-            padding-top: 25px;
-            border-top: 2px solid #e5e7eb;
-            font-size: 10px;
+            margin-top: 30px;
+            padding-top: 15px;
+            border-top: 1px solid #e5e7eb;
+            font-size: 8px;
             color: #6b7280;
         }
         .notes-terms {
-            margin-top: 35px;
+            margin-top: 20px;
             display: flex;
-            gap: 30px;
+            gap: 20px;
         }
         .notes-terms > div {
             flex: 1;
         }
         .notes-terms h4 {
-            font-size: 14px;
-            margin-bottom: 10px;
+            font-size: 9px;
+            margin-bottom: 6px;
             color: #1f2937;
-            border-bottom: 2px solid #e5e7eb;
-            padding-bottom: 8px;
+            border-bottom: 1px solid #e5e7eb;
+            padding-bottom: 4px;
             font-weight: bold;
         }
         .notes-terms p {
-            font-size: 11px;
+            font-size: 8px;
             color: #4b5563;
-            line-height: 1.6;
+            line-height: 1.4;
         }
         .page-number {
             position: fixed;
@@ -260,7 +263,7 @@
             color: rgba(220, 38, 38, 0.1);
         }
         @page {
-            margin: 1.5cm;
+            margin: 1cm;
         }
         .page-footer {
             position: fixed;
@@ -311,14 +314,14 @@
                 }
             @endphp
             @if($logoBase64)
-                <img src="{{ $logoBase64 }}" alt="Unicorn Supplies CC" style="max-height: 80px; margin-bottom: 10px;">
+                <img src="{{ $logoBase64 }}" alt="Unicorn Supplies CC" style="max-height: 50px; margin-bottom: 6px;">
             @endif
-            <h1 style="margin-top: {{ $logoBase64 ? '10px' : '0' }};">Unicorn Supplies CC</h1>
-            <div style="color: #666; font-size: 12px; margin-top: 10px; line-height: 1.8;">
-                <p style="margin: 2px 0;"><strong>e.</strong> supply@unicorn.com.na</p>
-                <p style="margin: 2px 0;"><strong>t.</strong> +264811600014</p>
-                <p style="margin: 2px 0;"><strong>Registration:</strong> CC/2020/02411</p>
-                <p style="margin: 2px 0;"><strong>VAT:</strong> 11070239</p>
+            <h1 style="margin-top: {{ $logoBase64 ? '6px' : '0' }};">Unicorn Supplies CC</h1>
+            <div style="color: #666; font-size: 8px; margin-top: 6px; line-height: 1.4;">
+                <p style="margin: 1px 0;"><strong>e.</strong> supply@unicorn.com.na</p>
+                <p style="margin: 1px 0;"><strong>t.</strong> +264811600014</p>
+                <p style="margin: 1px 0;"><strong>Registration:</strong> CC/2020/02411</p>
+                <p style="margin: 1px 0;"><strong>VAT:</strong> 11070239</p>
             </div>
         </div>
         <div class="invoice-info">
@@ -336,30 +339,30 @@
                     - OVERDUE
                 @endif
             </div>
-            <p style="margin: 8px 0; font-size: 12px;"><strong>Issue Date:</strong> {{ $invoice->issue_date?->format('F j, Y') ?? 'Draft' }}</p>
-            <p style="margin: 8px 0; font-size: 12px; {{ $isOverdue ? 'color: #dc2626; font-weight: bold;' : '' }}"><strong>Due Date:</strong> {{ $invoice->due_date->format('F j, Y') }}</p>
+            <p style="margin: 4px 0; font-size: 8px;"><strong>Issue Date:</strong> {{ $invoice->issue_date?->format('F j, Y') ?? 'Draft' }}</p>
+            <p style="margin: 4px 0; font-size: 8px; {{ $isOverdue ? 'color: #dc2626; font-weight: bold;' : '' }}"><strong>Due Date:</strong> {{ $invoice->due_date->format('F j, Y') }}</p>
             @if($invoice->status->value === 'paid')
-                <p style="margin: 8px 0; font-size: 12px; color: #065f46; font-weight: bold;">✓ Payment Received</p>
+                <p style="margin: 4px 0; font-size: 8px; color: #065f46; font-weight: bold;">✓ Payment Received</p>
             @elseif($invoice->status->value === 'partially_paid')
-                <p style="margin: 8px 0; font-size: 12px; color: #92400e; font-weight: bold;">⚠ Partially Paid</p>
+                <p style="margin: 4px 0; font-size: 8px; color: #92400e; font-weight: bold;">⚠ Partially Paid</p>
             @endif
         </div>
     </div>
 
     <div class="bill-to">
         <h3>Bill To:</h3>
-        <p style="font-weight: bold; font-size: 14px; margin-bottom: 5px;">{{ $invoice->client->name }}</p>
+        <p style="font-weight: bold; font-size: 9px; margin-bottom: 3px;">{{ $invoice->client->name }}</p>
         @if($invoice->client->address)
-            <p style="margin: 3px 0;">{{ $invoice->client->address }}</p>
+            <p style="margin: 2px 0; font-size: 8px;">{{ $invoice->client->address }}</p>
         @endif
         @if($invoice->client->email)
-            <p style="margin: 3px 0;">Email: {{ $invoice->client->email }}</p>
+            <p style="margin: 2px 0; font-size: 8px;">Email: {{ $invoice->client->email }}</p>
         @endif
         @if($invoice->client->phone)
-            <p style="margin: 3px 0;">Phone: {{ $invoice->client->phone }}</p>
+            <p style="margin: 2px 0; font-size: 8px;">Phone: {{ $invoice->client->phone }}</p>
         @endif
         @if($invoice->client->vat_number)
-            <p style="margin: 3px 0;"><strong>VAT Number:</strong> {{ $invoice->client->vat_number }}</p>
+            <p style="margin: 2px 0; font-size: 8px;"><strong>VAT Number:</strong> {{ $invoice->client->vat_number }}</p>
         @endif
     </div>
 
@@ -449,15 +452,15 @@
     @endif
 
     <div class="footer">
-        <div style="margin-bottom: 15px; padding: 15px; background-color: #f9fafb; border-left: 5px solid #2563eb; border-radius: 4px;">
-            <h4 style="font-size: 13px; margin-bottom: 10px; color: #1f2937; font-weight: bold;">Banking Details</h4>
-            <p style="margin: 4px 0; font-size: 11px; color: #4b5563;"><strong>Unicorn Supplies CC</strong></p>
-            <p style="margin: 4px 0; font-size: 11px; color: #4b5563;"><strong>Account:</strong> 8019079296</p>
-            <p style="margin: 4px 0; font-size: 11px; color: #4b5563;"><strong>Branch:</strong> 483872, Maerua Mall</p>
-            <p style="margin: 4px 0; font-size: 11px; color: #4b5563;"><strong>Bank Name:</strong> Bank Windhoek</p>
+        <div style="margin-bottom: 10px; padding: 10px; background-color: #f9fafb; border-left: 3px solid #2563eb; border-radius: 3px;">
+            <h4 style="font-size: 9px; margin-bottom: 6px; color: #1f2937; font-weight: bold;">Banking Details</h4>
+            <p style="margin: 2px 0; font-size: 8px; color: #4b5563;"><strong>Unicorn Supplies CC</strong></p>
+            <p style="margin: 2px 0; font-size: 8px; color: #4b5563;"><strong>Account:</strong> 8019079296</p>
+            <p style="margin: 2px 0; font-size: 8px; color: #4b5563;"><strong>Branch:</strong> 483872, Maerua Mall</p>
+            <p style="margin: 2px 0; font-size: 8px; color: #4b5563;"><strong>Bank Name:</strong> Bank Windhoek</p>
         </div>
-        <p style="margin: 10px 0; font-size: 10px; color: #6b7280;">This is a computer-generated invoice. No signature required.</p>
-        <p style="margin: 5px 0; font-size: 10px; color: #6b7280;">Generated on: {{ now()->format('F j, Y \a\t g:i A') }}</p>
+        <p style="margin: 6px 0; font-size: 8px; color: #6b7280;">This is a computer-generated invoice. No signature required.</p>
+        <p style="margin: 3px 0; font-size: 8px; color: #6b7280;">Generated on: {{ now()->format('F j, Y \a\t g:i A') }}</p>
     </div>
 </body>
 </html>
