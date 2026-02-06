@@ -5,6 +5,7 @@ use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ReportController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -37,7 +38,10 @@ Route::middleware('auth')->group(function () {
     Route::patch('invoices/{invoice}/payments/{payment}', [PaymentController::class, 'update'])->name('payments.update');
     Route::delete('invoices/{invoice}/payments/{payment}', [PaymentController::class, 'destroy'])->name('payments.destroy');
 
-    // Reports
+    // Users
+    Route::resource('users', UserController::class)->only(['index']);
+
+    // Reports (hidden from navigation but routes still exist)
     Route::get('reports', [ReportController::class, 'index'])->name('reports.index');
     Route::get('reports/sales-summary', [ReportController::class, 'salesSummary'])->name('reports.sales-summary');
 

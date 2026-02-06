@@ -23,11 +23,9 @@
                             {{ __('Invoices') }}
                         </x-nav-link>
                     @endcan
-                    @can('viewAny', App\Models\Invoice::class)
-                        <x-nav-link :href="route('reports.index')" :active="request()->routeIs('reports.*')">
-                            {{ __('Reports') }}
-                        </x-nav-link>
-                    @endcan
+                    <x-nav-link :href="route('users.index')" :active="request()->routeIs('users.*')">
+                        {{ __('Users') }}
+                    </x-nav-link>
                 </div>
             </div>
 
@@ -90,11 +88,9 @@
                     {{ __('Invoices') }}
                 </x-responsive-nav-link>
             @endcan
-            @can('viewAny', App\Models\Invoice::class)
-                <x-responsive-nav-link :href="route('reports.index')" :active="request()->routeIs('reports.*')">
-                    {{ __('Reports') }}
-                </x-responsive-nav-link>
-            @endcan
+            <x-responsive-nav-link :href="route('users.index')" :active="request()->routeIs('users.*')">
+                {{ __('Users') }}
+            </x-responsive-nav-link>
         </div>
 
         <!-- Responsive Settings Options -->
