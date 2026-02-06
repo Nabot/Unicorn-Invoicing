@@ -12,7 +12,7 @@ use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
-    const MAX_USERS_PER_COMPANY = 3;
+    const MAX_USERS_PER_COMPANY = 2;
 
     /**
      * Display a listing of the resource.
