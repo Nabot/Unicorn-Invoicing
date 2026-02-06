@@ -83,13 +83,12 @@
                                 {{ __('New User') }}
                             </a>
                         @else
-                            <button disabled 
-                                    class="bg-gray-400 text-white font-bold py-2 px-4 rounded text-sm cursor-not-allowed flex items-center gap-2 opacity-50">
+                            <div class="bg-gray-400 text-white font-bold py-2 px-4 rounded text-sm cursor-not-allowed flex items-center gap-2 opacity-50 inline-flex">
                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
                                 </svg>
                                 {{ __('New User') }} (Limit Reached)
-                            </button>
+                            </div>
                         @endif
                     </div>
 
