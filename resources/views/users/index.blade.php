@@ -54,10 +54,10 @@
                     <div class="mb-4 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
                         <div class="text-sm text-gray-600 dark:text-gray-400">
                             <span class="font-medium">Users:</span> 
-                            <span class="{{ $currentUserCount >= 3 ? 'text-red-600 dark:text-red-400 font-bold' : '' }}">
-                                {{ $currentUserCount }} / {{ \App\Http\Controllers\UserController::MAX_USERS_PER_COMPANY }}
+                            <span class="{{ $currentUserCount >= $maxUsers ? 'text-red-600 dark:text-red-400 font-bold' : '' }}">
+                                {{ $currentUserCount }} / {{ $maxUsers }}
                             </span>
-                            @if($currentUserCount >= 3)
+                            @if($currentUserCount >= $maxUsers)
                                 <span class="ml-2 text-red-600 dark:text-red-400">(Limit reached)</span>
                             @endif
                         </div>

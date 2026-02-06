@@ -54,8 +54,9 @@ class UserController extends Controller
         // Get current user count
         $currentUserCount = User::where('company_id', $companyId)->count();
         $canAddMore = $currentUserCount < self::MAX_USERS_PER_COMPANY;
+        $maxUsers = self::MAX_USERS_PER_COMPANY;
 
-        return view('users.index', compact('users', 'sortBy', 'currentUserCount', 'canAddMore'));
+        return view('users.index', compact('users', 'sortBy', 'currentUserCount', 'canAddMore', 'maxUsers'));
     }
 
     /**
