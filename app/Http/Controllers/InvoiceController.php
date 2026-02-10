@@ -388,4 +388,32 @@ class InvoiceController extends Controller
 
         return view('invoices.print', compact('invoice'));
     }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(Request $request, Invoice $invoice): RedirectResponse
+    {
+        $this->authorize('delete', $invoice);
+
+        // Prevent deletion if invoice has payments
+        if ($invoice->payments()->exists()) {
+            return redirect()->route('invoices.show', $invoice)
+                ->with('error', 'Cannot delete invoice with existing payments. Please void the invoice instead.');
+        }
+
+        $companyId = $invoice->company_id;
+        
+        // Delete invoice items first
+        $invoice->items()->delete();
+        
+        // Delete the invoice
+        $invoice->delete();
+
+        // Clear cache
+        CacheService::clearInvoiceStats($companyId);
+
+        return redirect()->route('invoices.index')
+            ->with('success', 'Invoice deleted successfully.');
+    }
 }

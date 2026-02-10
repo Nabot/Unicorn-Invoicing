@@ -269,4 +269,27 @@ class QuoteController extends Controller
                 ->with('error', $e->getMessage());
         }
     }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(Request $request, Quote $quote): RedirectResponse
+    {
+        $this->authorize('delete', $quote);
+
+        // Prevent deletion if quote has been converted to an invoice
+        if ($quote->invoice_id !== null) {
+            return redirect()->route('quotes.show', $quote)
+                ->with('error', 'Cannot delete quote that has been converted to an invoice.');
+        }
+
+        // Delete quote items first
+        $quote->items()->delete();
+        
+        // Delete the quote
+        $quote->delete();
+
+        return redirect()->route('quotes.index')
+            ->with('success', 'Quote deleted successfully.');
+    }
 }

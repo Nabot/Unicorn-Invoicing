@@ -84,4 +84,22 @@ class InvoicePolicy
 
         return $user->can('void-invoices');
     }
+
+    /**
+     * Determine whether the user can delete the model.
+     */
+    public function delete(User $user, Invoice $invoice): bool
+    {
+        // Check company scope
+        if ($user->company_id !== $invoice->company_id) {
+            return false;
+        }
+
+        // Prevent deletion if invoice has payments
+        if ($invoice->payments()->exists()) {
+            return false;
+        }
+
+        return $user->can('delete-invoices');
+    }
 }
