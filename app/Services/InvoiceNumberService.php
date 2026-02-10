@@ -17,6 +17,12 @@ class InvoiceNumberService
         $year = $year ?? (int) date('Y');
 
         return DB::transaction(function () use ($companyId, $year) {
+            // Ensure company exists before creating settings
+            $company = \App\Models\Company::find($companyId);
+            if (!$company) {
+                throw new \Exception("Company with ID {$companyId} does not exist. Please ensure the company is created first.");
+            }
+            
             // Get company settings or use defaults
             $settings = CompanySetting::firstOrCreate(
                 ['company_id' => $companyId],
