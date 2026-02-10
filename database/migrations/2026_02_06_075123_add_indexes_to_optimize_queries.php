@@ -11,34 +11,39 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('invoices', function (Blueprint $table) {
-            // Index for filtering by status
-            // Skip if index already exists on this column (handles both named and unnamed indexes)
+        $connection = Schema::getConnection();
+        
+        // Index for filtering by status - check by name FIRST
+        if (!$this->hasIndex('invoices', 'invoices_status_index')) {
+            // Only create if index doesn't exist by name AND doesn't exist on column
             if (!$this->hasIndexOnColumn('invoices', 'status')) {
                 try {
-                    $table->index('status', 'invoices_status_index');
-                } catch (\Illuminate\Database\QueryException $e) {
-                    // Ignore duplicate key errors (index might exist with different name)
-                    if (strpos($e->getMessage(), 'Duplicate key') === false && strpos($e->getMessage(), '1061') === false) {
+                    $connection->statement('ALTER TABLE `invoices` ADD INDEX `invoices_status_index` (`status`)');
+                } catch (\Exception $e) {
+                    // Ignore duplicate key errors (1061)
+                    if (strpos($e->getMessage(), '1061') === false && strpos($e->getMessage(), 'Duplicate key') === false) {
                         throw $e;
                     }
                 }
             }
+        }
+        
+        Schema::table('invoices', function (Blueprint $table) {
             // Index for filtering by due_date
-            if (!$this->hasIndexOnColumn('invoices', 'due_date')) {
+            if (!$this->hasIndex('invoices', 'invoices_due_date_index') && !$this->hasIndexOnColumn('invoices', 'due_date')) {
                 try {
                     $table->index('due_date', 'invoices_due_date_index');
-                } catch (\Illuminate\Database\QueryException $e) {
+                } catch (\Exception $e) {
                     if (strpos($e->getMessage(), 'Duplicate key') === false && strpos($e->getMessage(), '1061') === false) {
                         throw $e;
                     }
                 }
             }
             // Index for filtering by issue_date
-            if (!$this->hasIndexOnColumn('invoices', 'issue_date')) {
+            if (!$this->hasIndex('invoices', 'invoices_issue_date_index') && !$this->hasIndexOnColumn('invoices', 'issue_date')) {
                 try {
                     $table->index('issue_date', 'invoices_issue_date_index');
-                } catch (\Illuminate\Database\QueryException $e) {
+                } catch (\Exception $e) {
                     if (strpos($e->getMessage(), 'Duplicate key') === false && strpos($e->getMessage(), '1061') === false) {
                         throw $e;
                     }
@@ -149,17 +154,31 @@ return new class extends Migration
     }
 
     /**
-     * Check if an index exists by name.
+     * Check if an index exists by name using raw SQL query.
      */
     private function hasIndex(string $table, string $index): bool
     {
         try {
             $connection = Schema::getConnection();
-            $doctrineSchemaManager = $connection->getDoctrineSchemaManager();
-            $doctrineTable = $doctrineSchemaManager->listTableDetails($table);
-            return $doctrineTable->hasIndex($index);
+            $databaseName = $connection->getDatabaseName();
+            
+            $result = $connection->selectOne(
+                "SELECT COUNT(*) as count FROM information_schema.statistics 
+                 WHERE table_schema = ? AND table_name = ? AND index_name = ?",
+                [$databaseName, $table, $index]
+            );
+            
+            return $result && $result->count > 0;
         } catch (\Exception $e) {
-            return false;
+            // Fallback to Doctrine if raw query fails
+            try {
+                $connection = Schema::getConnection();
+                $doctrineSchemaManager = $connection->getDoctrineSchemaManager();
+                $doctrineTable = $doctrineSchemaManager->listTableDetails($table);
+                return $doctrineTable->hasIndex($index);
+            } catch (\Exception $e2) {
+                return false;
+            }
         }
     }
 
