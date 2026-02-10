@@ -58,6 +58,9 @@ Route::middleware('auth')->group(function () {
     Route::get('invoices/export/pdf/batch', [\App\Http\Controllers\ExportController::class, 'exportPdfBatch'])->name('invoices.export.pdf.batch');
     Route::get('invoices/{invoice}/download-pdf', [\App\Http\Controllers\ExportController::class, 'exportPdf'])->name('invoices.download.pdf');
     Route::post('invoices/{invoice}/email', [\App\Http\Controllers\ExportController::class, 'emailInvoice'])->name('invoices.email');
+    
+    // Quote Exports
+    Route::get('quotes/{quote}/download-pdf', [\App\Http\Controllers\ExportController::class, 'exportQuotePdf'])->name('quotes.download.pdf');
 });
 
 require __DIR__.'/auth.php';

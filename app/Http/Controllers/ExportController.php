@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Enums\InvoiceStatus;
 use App\Models\Client;
 use App\Models\Invoice;
+use App\Models\Quote;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Log;
@@ -201,6 +202,22 @@ class ExportController extends Controller
         };
 
         return response()->stream($callback, 200, $headers);
+    }
+
+    /**
+     * Export a single quote to PDF.
+     */
+    public function exportQuotePdf(Quote $quote)
+    {
+        $this->authorize('view', $quote);
+
+        $quote->load(['items', 'client', 'creator']);
+
+        $pdf = Pdf::loadView('quotes.pdf', compact('quote'));
+        
+        $filename = 'quote_' . $quote->quote_number . '_' . date('Y-m-d') . '.pdf';
+
+        return $pdf->download($filename);
     }
 
     /**
