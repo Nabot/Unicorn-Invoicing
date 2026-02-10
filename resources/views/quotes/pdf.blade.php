@@ -21,7 +21,7 @@
             display: flex;
             justify-content: space-between;
             margin-bottom: 20px;
-            border-bottom: 2px solid #2563eb;
+            border-bottom: 2px solid #000000;
             padding-bottom: 15px;
         }
         .company-info {
@@ -56,26 +56,26 @@
             color: #374151;
         }
         .status-sent {
-            background-color: #dbeafe;
-            color: #1e40af;
+            background-color: #e5e7eb;
+            color: #374151;
         }
         .status-accepted {
-            background-color: #d1fae5;
-            color: #065f46;
+            background-color: #e5e7eb;
+            color: #374151;
         }
         .status-rejected {
-            background-color: #fee2e2;
-            color: #991b1b;
+            background-color: #d1d5db;
+            color: #000000;
         }
         .status-expired {
-            background-color: #fed7aa;
-            color: #9a3412;
+            background-color: #d1d5db;
+            color: #000000;
         }
         .bill-to {
             margin: 15px 0;
             padding: 12px;
             background-color: #f9fafb;
-            border-left: 3px solid #2563eb;
+            border-left: 3px solid #000000;
             border-radius: 3px;
         }
         .bill-to h3 {
@@ -173,7 +173,7 @@
             color: #1f2937;
         }
         .discount-row {
-            color: #dc2626;
+            color: #000000;
         }
         .footer {
             margin-top: 30px;
@@ -218,10 +218,10 @@
             color: rgba(107, 114, 128, 0.1);
         }
         .watermark.accepted {
-            color: rgba(5, 150, 105, 0.1);
+            color: rgba(0, 0, 0, 0.05);
         }
         .watermark.expired {
-            color: rgba(220, 38, 38, 0.1);
+            color: rgba(0, 0, 0, 0.05);
         }
         @page {
             margin: 1cm;
@@ -290,10 +290,10 @@
             </div>
             <p style="margin: 4px 0; font-size: 8px;"><strong>Quote Date:</strong> {{ $quote->quote_date->format('F j, Y') }}</p>
             @if($quote->expiry_date)
-                <p style="margin: 4px 0; font-size: 8px; {{ $isExpired ? 'color: #dc2626; font-weight: bold;' : '' }}"><strong>Expiry Date:</strong> {{ $quote->expiry_date->format('F j, Y') }}</p>
+                <p style="margin: 4px 0; font-size: 8px; {{ $isExpired ? 'color: #000000; font-weight: bold;' : '' }}"><strong>Expiry Date:</strong> {{ $quote->expiry_date->format('F j, Y') }}</p>
             @endif
             @if($quote->invoice)
-                <p style="margin: 4px 0; font-size: 8px; color: #065f46; font-weight: bold;">✓ Converted to Invoice</p>
+                <p style="margin: 4px 0; font-size: 8px; color: #374151; font-weight: bold;">✓ Converted to Invoice</p>
             @endif
         </div>
     </div>
@@ -391,7 +391,7 @@
     @endif
 
     <div class="footer">
-        <div style="margin-bottom: 10px; padding: 10px; background-color: #f9fafb; border-left: 3px solid #2563eb; border-radius: 3px;">
+        <div style="margin-bottom: 10px; padding: 10px; background-color: #f9fafb; border-left: 3px solid #000000; border-radius: 3px;">
             <h4 style="font-size: 9px; margin-bottom: 6px; color: #1f2937; font-weight: bold;">Banking Details</h4>
             <p style="margin: 2px 0; font-size: 8px; color: #4b5563;"><strong>Unicorn Supplies CC</strong></p>
             <p style="margin: 2px 0; font-size: 8px; color: #4b5563;"><strong>Account:</strong> 8019079296</p>

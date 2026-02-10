@@ -21,7 +21,7 @@
             display: flex;
             justify-content: space-between;
             margin-bottom: 20px;
-            border-bottom: 2px solid #2563eb;
+            border-bottom: 2px solid #000000;
             padding-bottom: 15px;
         }
         .company-info {
@@ -56,20 +56,20 @@
             color: #374151;
         }
         .status-issued {
-            background-color: #dbeafe;
-            color: #1e40af;
+            background-color: #e5e7eb;
+            color: #374151;
         }
         .status-paid {
-            background-color: #d1fae5;
-            color: #065f46;
+            background-color: #e5e7eb;
+            color: #374151;
         }
         .status-partially-paid {
-            background-color: #fef3c7;
-            color: #92400e;
+            background-color: #e5e7eb;
+            color: #374151;
         }
         .status-overdue {
-            background-color: #fee2e2;
-            color: #991b1b;
+            background-color: #d1d5db;
+            color: #000000;
         }
         .status-void {
             background-color: #f3f4f6;
@@ -79,7 +79,7 @@
             margin: 15px 0;
             padding: 12px;
             background-color: #f9fafb;
-            border-left: 3px solid #2563eb;
+            border-left: 3px solid #000000;
             border-radius: 3px;
         }
         .bill-to h3 {
@@ -180,32 +180,32 @@
             color: #1f2937;
         }
         .totals .balance-row {
-            background-color: #fef3c7;
+            background-color: #e5e7eb;
             font-weight: bold;
             font-size: 10px;
-            border: 1px solid #fbbf24;
+            border: 1px solid #6b7280;
         }
         .totals .balance-row .label {
             font-size: 10px;
             font-weight: bold;
-            color: #92400e;
+            color: #000000;
         }
         .totals .balance-row .value {
             font-size: 11px;
             font-weight: bold;
-            color: #92400e;
+            color: #000000;
         }
         .totals .paid-row {
-            background-color: #d1fae5;
+            background-color: #e5e7eb;
         }
         .totals .paid-row .label {
-            color: #065f46;
+            color: #374151;
         }
         .totals .paid-row .value {
-            color: #065f46;
+            color: #374151;
         }
         .discount-row {
-            color: #dc2626;
+            color: #000000;
         }
         .footer {
             margin-top: 30px;
@@ -257,10 +257,10 @@
             color: rgba(107, 114, 128, 0.1);
         }
         .watermark.paid {
-            color: rgba(5, 150, 105, 0.1);
+            color: rgba(0, 0, 0, 0.05);
         }
         .watermark.overdue {
-            color: rgba(220, 38, 38, 0.1);
+            color: rgba(0, 0, 0, 0.05);
         }
         @page {
             margin: 1cm;
@@ -340,11 +340,11 @@
                 @endif
             </div>
             <p style="margin: 4px 0; font-size: 8px;"><strong>Issue Date:</strong> {{ $invoice->issue_date?->format('F j, Y') ?? 'Draft' }}</p>
-            <p style="margin: 4px 0; font-size: 8px; {{ $isOverdue ? 'color: #dc2626; font-weight: bold;' : '' }}"><strong>Due Date:</strong> {{ $invoice->due_date->format('F j, Y') }}</p>
+            <p style="margin: 4px 0; font-size: 8px; {{ $isOverdue ? 'color: #000000; font-weight: bold;' : '' }}"><strong>Due Date:</strong> {{ $invoice->due_date->format('F j, Y') }}</p>
             @if($invoice->status->value === 'paid')
-                <p style="margin: 4px 0; font-size: 8px; color: #065f46; font-weight: bold;">✓ Payment Received</p>
+                <p style="margin: 4px 0; font-size: 8px; color: #374151; font-weight: bold;">✓ Payment Received</p>
             @elseif($invoice->status->value === 'partially_paid')
-                <p style="margin: 4px 0; font-size: 8px; color: #92400e; font-weight: bold;">⚠ Partially Paid</p>
+                <p style="margin: 4px 0; font-size: 8px; color: #374151; font-weight: bold;">⚠ Partially Paid</p>
             @endif
         </div>
     </div>
@@ -452,7 +452,7 @@
     @endif
 
     <div class="footer">
-        <div style="margin-bottom: 10px; padding: 10px; background-color: #f9fafb; border-left: 3px solid #2563eb; border-radius: 3px;">
+        <div style="margin-bottom: 10px; padding: 10px; background-color: #f9fafb; border-left: 3px solid #000000; border-radius: 3px;">
             <h4 style="font-size: 9px; margin-bottom: 6px; color: #1f2937; font-weight: bold;">Banking Details</h4>
             <p style="margin: 2px 0; font-size: 8px; color: #4b5563;"><strong>Unicorn Supplies CC</strong></p>
             <p style="margin: 2px 0; font-size: 8px; color: #4b5563;"><strong>Account:</strong> 8019079296</p>
