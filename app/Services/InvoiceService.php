@@ -55,6 +55,7 @@ class InvoiceService
                         'company_id' => $companyId,
                         'client_id' => $invoiceData['client_id'],
                         'status' => InvoiceStatus::DRAFT,
+                        'issue_date' => isset($invoiceData['issue_date']) ? $invoiceData['issue_date'] : null,
                         'due_date' => $invoiceData['due_date'],
                         'subtotal' => $totals['subtotal'],
                         'vat_total' => $totals['vat_total'],
@@ -134,6 +135,7 @@ class InvoiceService
             // Update invoice
             $invoice->update([
                 'client_id' => $invoiceData['client_id'] ?? $invoice->client_id,
+                'issue_date' => isset($invoiceData['issue_date']) ? $invoiceData['issue_date'] : $invoice->issue_date,
                 'due_date' => $invoiceData['due_date'] ?? $invoice->due_date,
                 'subtotal' => $totals['subtotal'],
                 'vat_total' => $totals['vat_total'],
@@ -179,7 +181,7 @@ class InvoiceService
 
         $invoice->update([
             'status' => InvoiceStatus::ISSUED,
-            'issue_date' => now(),
+            'issue_date' => $invoice->issue_date ?? now(),
         ]);
 
         event(new InvoiceIssued($invoice));

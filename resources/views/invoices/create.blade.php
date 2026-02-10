@@ -32,7 +32,7 @@
                             </x-alert>
                         </div>
 
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
                             <div>
                                 <label class="block text-sm font-medium mb-2">Customer *</label>
                                 <select name="client_id" id="client_id" required
@@ -49,6 +49,17 @@
                                     <p class="text-red-500 text-xs mt-1 error-message">{{ $message }}</p>
                                 @enderror
                                 <p class="text-red-500 text-xs mt-1 error-message hidden" id="client_id_error"></p>
+                            </div>
+
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Invoice Date</label>
+                                <input type="date" name="issue_date" id="issue_date" value="{{ old('issue_date', now()->format('Y-m-d')) }}"
+                                       class="w-full border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                                       data-validate="date">
+                                @error('issue_date')
+                                    <p class="text-red-500 text-xs mt-1 error-message">{{ $message }}</p>
+                                @enderror
+                                <p class="text-red-500 text-xs mt-1 error-message hidden" id="issue_date_error"></p>
                             </div>
 
                             <div>

@@ -13,7 +13,7 @@
                         @csrf
                         @method('PATCH')
 
-                        <div class="grid grid-cols-2 gap-4 mb-6">
+                        <div class="grid grid-cols-3 gap-4 mb-6">
                             <div>
                                 <label class="block text-sm font-medium mb-2">Customer *</label>
                                 <select name="client_id" required
@@ -25,6 +25,13 @@
                                     @endforeach
                                 </select>
                                 @error('client_id')<p class="text-red-500 text-xs mt-1">{{ $message }}</p>@enderror
+                            </div>
+
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Invoice Date</label>
+                                <input type="date" name="issue_date" value="{{ old('issue_date', $invoice->issue_date?->format('Y-m-d') ?? now()->format('Y-m-d')) }}"
+                                       class="w-full border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 rounded-md">
+                                @error('issue_date')<p class="text-red-500 text-xs mt-1">{{ $message }}</p>@enderror
                             </div>
 
                             <div>

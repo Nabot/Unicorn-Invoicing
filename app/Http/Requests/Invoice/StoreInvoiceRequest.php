@@ -27,6 +27,7 @@ class StoreInvoiceRequest extends FormRequest
                 'required',
                 Rule::exists('clients', 'id')->where('company_id', $this->user()->company_id),
             ],
+            'issue_date' => ['nullable', 'date'],
             'due_date' => ['required', 'date', 'after_or_equal:today'],
             'notes' => ['nullable', 'string', 'max:1000'],
             'terms' => ['nullable', 'string', 'max:1000'],

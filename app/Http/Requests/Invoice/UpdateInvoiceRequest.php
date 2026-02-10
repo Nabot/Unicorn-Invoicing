@@ -23,6 +23,7 @@ class UpdateInvoiceRequest extends FormRequest
     {
         return [
             'client_id' => ['sometimes', 'required', 'exists:clients,id'],
+            'issue_date' => ['sometimes', 'nullable', 'date'],
             'due_date' => ['sometimes', 'required', 'date', 'after_or_equal:today'],
             'notes' => ['nullable', 'string'],
             'terms' => ['nullable', 'string'],
