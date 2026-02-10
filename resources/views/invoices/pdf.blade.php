@@ -372,7 +372,6 @@
                 <th>Description</th>
                 <th class="text-right">Quantity</th>
                 <th class="text-right">Unit Price</th>
-                <th class="text-right">Discount</th>
                 <th>VAT</th>
                 <th class="text-right">Total</th>
             </tr>
@@ -383,7 +382,6 @@
                     <td>{{ $index + 1 }}. {{ $item->description }}</td>
                     <td class="text-right">{{ number_format($item->quantity, 2) }}</td>
                     <td class="text-right">{{ config('app.currency', 'N$') }} {{ number_format($item->unit_price, 2) }}</td>
-                    <td class="text-right {{ ($item->discount ?? 0) > 0 ? 'discount-row' : '' }}">{{ config('app.currency', 'N$') }} {{ number_format($item->discount ?? 0, 2) }}</td>
                     <td>{{ $item->vat_applicable ? '15%' : 'No' }}</td>
                     <td class="text-right"><strong>{{ config('app.currency', 'N$') }} {{ number_format($item->line_total, 2) }}</strong></td>
                 </tr>
