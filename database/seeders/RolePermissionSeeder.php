@@ -30,6 +30,10 @@ class RolePermissionSeeder extends Seeder
             'record-payments',
             'view-assigned-invoices',
             'view-assigned-clients',
+            'view-quotes',
+            'create-quotes',
+            'edit-quotes',
+            'delete-quotes',
         ];
 
         foreach ($permissions as $permission) {
@@ -53,6 +57,10 @@ class RolePermissionSeeder extends Seeder
             'issue-invoices',
             'void-invoices',
             'record-payments',
+            'view-quotes',
+            'create-quotes',
+            'edit-quotes',
+            'delete-quotes',
         ]);
 
         // Assign permissions to Staff
@@ -64,6 +72,10 @@ class RolePermissionSeeder extends Seeder
             'void-invoices',
             'record-payments',
             'view-assigned-invoices',
+            'view-quotes',
+            'create-quotes',
+            'edit-quotes',
+            'delete-quotes',
         ]);
 
         // Assign permissions to Agent
