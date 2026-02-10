@@ -6,7 +6,7 @@ if (!function_exists('format_currency')) {
      */
     function format_currency($amount, $currency = null): string
     {
-        $currency = $currency ?? config('app.currency', 'R');
+        $currency = $currency ?? config('app.currency', 'N$');
         return $currency . number_format((float) $amount, 2);
     }
 }

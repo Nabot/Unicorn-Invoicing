@@ -382,10 +382,10 @@
                 <tr>
                     <td>{{ $index + 1 }}. {{ $item->description }}</td>
                     <td class="text-right">{{ number_format($item->quantity, 2) }}</td>
-                    <td class="text-right">R {{ number_format($item->unit_price, 2) }}</td>
-                    <td class="text-right {{ ($item->discount ?? 0) > 0 ? 'discount-row' : '' }}">R {{ number_format($item->discount ?? 0, 2) }}</td>
+                    <td class="text-right">{{ config('app.currency', 'N$') }} {{ number_format($item->unit_price, 2) }}</td>
+                    <td class="text-right {{ ($item->discount ?? 0) > 0 ? 'discount-row' : '' }}">{{ config('app.currency', 'N$') }} {{ number_format($item->discount ?? 0, 2) }}</td>
                     <td>{{ $item->vat_applicable ? '15%' : 'No' }}</td>
-                    <td class="text-right"><strong>R {{ number_format($item->line_total, 2) }}</strong></td>
+                    <td class="text-right"><strong>{{ config('app.currency', 'N$') }} {{ number_format($item->line_total, 2) }}</strong></td>
                 </tr>
             @endforeach
         </tbody>
@@ -402,34 +402,34 @@
             @if($totalDiscount > 0)
                 <tr>
                     <td class="label">Subtotal (before discount):</td>
-                    <td class="value">R {{ number_format($subtotalBeforeDiscount, 2) }}</td>
+                    <td class="value">{{ config('app.currency', 'N$') }} {{ number_format($subtotalBeforeDiscount, 2) }}</td>
                 </tr>
                 <tr class="discount-row">
                     <td class="label">Total Discount:</td>
-                    <td class="value">- R {{ number_format($totalDiscount, 2) }}</td>
+                    <td class="value">- {{ config('app.currency', 'N$') }} {{ number_format($totalDiscount, 2) }}</td>
                 </tr>
             @endif
             <tr class="subtotal-row">
                 <td class="label">Subtotal:</td>
-                <td class="value">R {{ number_format($invoice->subtotal, 2) }}</td>
+                <td class="value">{{ config('app.currency', 'N$') }} {{ number_format($invoice->subtotal, 2) }}</td>
             </tr>
             <tr class="vat-row">
                 <td class="label">VAT (15%):</td>
-                <td class="value">R {{ number_format($invoice->vat_total, 2) }}</td>
+                <td class="value">{{ config('app.currency', 'N$') }} {{ number_format($invoice->vat_total, 2) }}</td>
             </tr>
             <tr class="total-row">
                 <td class="label">Total:</td>
-                <td class="value">R {{ number_format($invoice->total, 2) }}</td>
+                <td class="value">{{ config('app.currency', 'N$') }} {{ number_format($invoice->total, 2) }}</td>
             </tr>
             @if($invoice->amount_paid > 0)
                 <tr class="{{ $invoice->status->value === 'paid' ? 'paid-row' : '' }}">
                     <td class="label">Amount Paid:</td>
-                    <td class="value">R {{ number_format($invoice->amount_paid, 2) }}</td>
+                    <td class="value">{{ config('app.currency', 'N$') }} {{ number_format($invoice->amount_paid, 2) }}</td>
                 </tr>
             @endif
             <tr class="balance-row {{ $invoice->balance_due == 0 ? 'paid-row' : '' }}">
                 <td class="label">Balance Due:</td>
-                <td class="value">R {{ number_format($invoice->balance_due, 2) }}</td>
+                <td class="value">{{ config('app.currency', 'N$') }} {{ number_format($invoice->balance_due, 2) }}</td>
             </tr>
         </table>
     </div>

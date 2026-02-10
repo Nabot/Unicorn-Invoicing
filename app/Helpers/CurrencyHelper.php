@@ -9,7 +9,7 @@ class CurrencyHelper
      */
     public static function format(float $amount, ?string $currency = null): string
     {
-        $currency = $currency ?? config('app.currency', 'R');
+        $currency = $currency ?? config('app.currency', 'N$');
         return $currency . ' ' . number_format($amount, 2);
     }
 
