@@ -264,7 +264,7 @@
                 }
             @endphp
             @if($logoBase64)
-                <img src="{{ $logoBase64 }}" alt="Unicorn Supplies CC" style="max-height: 50px; margin-bottom: 6px;">
+                <img src="{{ $logoBase64 }}" alt="Unicorn Supplies CC" style="max-height: 75px; margin-bottom: 6px;">
             @endif
             <h1 style="margin-top: {{ $logoBase64 ? '6px' : '0' }};">Unicorn Supplies CC</h1>
             <div style="color: #666; font-size: 8px; margin-top: 6px; line-height: 1.4;">
