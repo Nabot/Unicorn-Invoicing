@@ -18,6 +18,11 @@
                             {{ __('Customers') }}
                         </x-nav-link>
                     @endcan
+                    @can('viewAny', App\Models\Quote::class)
+                        <x-nav-link :href="route('quotes.index')" :active="request()->routeIs('quotes.*')">
+                            {{ __('Quotations') }}
+                        </x-nav-link>
+                    @endcan
                     @can('viewAny', App\Models\Invoice::class)
                         <x-nav-link :href="route('invoices.index')" :active="request()->routeIs('invoices.*')">
                             {{ __('Invoices') }}
@@ -81,6 +86,11 @@
             @can('viewAny', App\Models\Client::class)
                 <x-responsive-nav-link :href="route('clients.index')" :active="request()->routeIs('clients.*')">
                     {{ __('Customers') }}
+                </x-responsive-nav-link>
+            @endcan
+            @can('viewAny', App\Models\Quote::class)
+                <x-responsive-nav-link :href="route('quotes.index')" :active="request()->routeIs('quotes.*')">
+                    {{ __('Quotations') }}
                 </x-responsive-nav-link>
             @endcan
             @can('viewAny', App\Models\Invoice::class)

@@ -16,6 +16,10 @@ class CompanySetting extends Model
         'invoice_format',
         'invoice_number_padding',
         'invoice_reset_yearly',
+        'quote_prefix',
+        'quote_format',
+        'quote_number_padding',
+        'quote_reset_yearly',
     ];
 
     protected function casts(): array
@@ -23,6 +27,8 @@ class CompanySetting extends Model
         return [
             'invoice_number_padding' => 'integer',
             'invoice_reset_yearly' => 'boolean',
+            'quote_number_padding' => 'integer',
+            'quote_reset_yearly' => 'boolean',
         ];
     }
 
@@ -44,6 +50,10 @@ class CompanySetting extends Model
             'invoice_format' => '{prefix}-{year}-{number}',
             'invoice_number_padding' => 5,
             'invoice_reset_yearly' => true,
+            'quote_prefix' => 'QUO',
+            'quote_format' => '{prefix}-{year}-{number}',
+            'quote_number_padding' => 5,
+            'quote_reset_yearly' => true,
         ];
     }
 }
