@@ -48,7 +48,7 @@
                                 </a>
                             @endif
 
-                            <a href="{{ route('clients.export.csv', request()->query()) }}" class="bg-brand-gold hover:bg-brand-gold-light text-brand-black text-white font-bold py-2 px-4 rounded transition-all hover:shadow-lg flex items-center gap-2">
+                            <a href="{{ route('clients.export.csv', request()->query()) }}" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded transition-all hover:shadow-lg flex items-center gap-2">
                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
                                 </svg>
@@ -67,7 +67,7 @@
                     <!-- New Customer Button -->
                     <div class="mb-4 flex justify-end">
                         @can('create', App\Models\Client::class)
-                            <a href="{{ route('clients.create') }}" class="bg-brand-gold hover:bg-brand-gold-light text-brand-black text-white font-bold py-2 px-4 rounded text-sm touch-manipulation transition-all hover:shadow-lg flex items-center gap-2">
+                            <a href="{{ route('clients.create') }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-sm touch-manipulation transition-all hover:shadow-lg flex items-center gap-2">
                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
                                 </svg>
@@ -187,7 +187,7 @@
                                                 <p class="text-gray-500 dark:text-gray-400 text-lg font-medium mb-2">No customers found</p>
                                                 <p class="text-gray-400 dark:text-gray-500 text-sm mb-4">Try adjusting your filters or create a new customer</p>
                                                 @can('create', App\Models\Client::class)
-                                                    <a href="{{ route('clients.create') }}" class="bg-brand-gold hover:bg-brand-gold-light text-brand-black text-white font-bold py-2 px-4 rounded">
+                                                    <a href="{{ route('clients.create') }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                                                         Create Your First Customer
                                                     </a>
                                                 @endcan

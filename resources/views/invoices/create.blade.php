@@ -66,7 +66,7 @@
                         <div class="mb-6">
                             <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-2 gap-2">
                                 <label class="block text-sm font-medium">Invoice Items *</label>
-                                <button type="button" onclick="addItem()" class="bg-brand-gold hover:bg-brand-gold-light text-brand-black text-white text-sm font-bold py-2 px-4 rounded touch-manipulation">
+                                <button type="button" onclick="addItem()" class="bg-green-500 hover:bg-green-700 text-white text-sm font-bold py-2 px-4 rounded touch-manipulation">
                                     + Add Item
                                 </button>
                             </div>
@@ -121,7 +121,7 @@
 
                         <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-end gap-3">
                             <a href="{{ route('invoices.index') }}" class="text-center text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 py-2 px-4 rounded">Cancel</a>
-                            <button type="submit" id="submit-btn" class="bg-brand-gold hover:bg-brand-gold-light text-brand-black text-white font-bold py-2 px-4 rounded touch-manipulation disabled:opacity-50 disabled:cursor-not-allowed">
+                            <button type="submit" id="submit-btn" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded touch-manipulation disabled:opacity-50 disabled:cursor-not-allowed">
                                 <span id="submit-text">Create Invoice</span>
                                 <span id="submit-loading" class="hidden">Creating...</span>
                             </button>

@@ -46,7 +46,7 @@
 
                         <div class="flex items-center justify-end">
                             <a href="{{ route('clients.index') }}" class="mr-4 text-gray-600 hover:text-gray-800">Cancel</a>
-                            <button type="submit" class="bg-brand-gold hover:bg-brand-gold-light text-brand-black text-white font-bold py-2 px-4 rounded">
+                            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                                 Create Customer
                             </button>
                         </div>

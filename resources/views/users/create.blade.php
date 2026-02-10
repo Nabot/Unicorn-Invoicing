@@ -87,7 +87,7 @@
                                 Cancel
                             </a>
                             <button type="submit" 
-                                    class="bg-brand-gold hover:bg-brand-gold-light text-brand-black text-white font-bold py-2 px-4 rounded transition-all hover:shadow-lg">
+                                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition-all hover:shadow-lg">
                                 Create User
                             </button>
                         </div>

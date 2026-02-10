@@ -38,7 +38,7 @@
                         <div class="mb-6">
                             <div class="flex justify-between items-center mb-2">
                                 <label class="block text-sm font-medium">Invoice Items *</label>
-                                <button type="button" onclick="addItem()" class="bg-brand-gold hover:bg-brand-gold-light text-brand-black text-white text-sm font-bold py-1 px-3 rounded">
+                                <button type="button" onclick="addItem()" class="bg-green-500 hover:bg-green-700 text-white text-sm font-bold py-1 px-3 rounded">
                                     + Add Item
                                 </button>
                             </div>
@@ -90,7 +90,7 @@
 
                         <div class="flex items-center justify-end">
                             <a href="{{ route('invoices.show', $invoice) }}" class="mr-4 text-gray-600 hover:text-gray-800">Cancel</a>
-                            <button type="submit" class="bg-brand-gold hover:bg-brand-gold-light text-brand-black text-white font-bold py-2 px-4 rounded">
+                            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                                 Update Invoice
                             </button>
                         </div>

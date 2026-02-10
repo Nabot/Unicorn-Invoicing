@@ -2,13 +2,13 @@
     <x-slot name="header">
         <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
             <div>
-                <h2 class="font-semibold text-xl text-brand-gold leading-tight">
+                <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
                     {{ __('Quotations') }}
                 </h2>
             </div>
             <div>
                 @can('create', App\Models\Quote::class)
-                    <a href="{{ route('quotes.create') }}" class="bg-brand-gold hover:bg-brand-gold-light text-brand-black text-white font-bold py-2 px-4 rounded transition-all hover:shadow-lg">
+                    <a href="{{ route('quotes.create') }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition-all hover:shadow-lg">
                         + New Quote
                     </a>
                 @endcan
@@ -56,7 +56,7 @@
                             <input type="text" name="search" value="{{ request('search') }}" placeholder="Quote number, client..." class="w-full border-gray-300 dark:border-gray-700 dark:bg-gray-900 rounded-md">
                         </div>
                         <div class="flex gap-2">
-                            <button type="submit" class="bg-brand-gold hover:bg-brand-gold-light text-brand-black text-white font-bold py-2 px-4 rounded">
+                            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                                 Filter
                             </button>
                             @if(request()->anyFilled(['status', 'client_id', 'search']))
@@ -72,7 +72,7 @@
             <!-- New Quote Button Above Table -->
             @can('create', App\Models\Quote::class)
                 <div class="mb-4 flex justify-end">
-                    <a href="{{ route('quotes.create') }}" class="bg-brand-gold hover:bg-brand-gold-light text-brand-black text-white font-bold py-2 px-4 rounded transition-all hover:shadow-lg">
+                    <a href="{{ route('quotes.create') }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition-all hover:shadow-lg">
                         + New Quote
                     </a>
                 </div>
@@ -117,7 +117,7 @@
                             @forelse($quotes as $quote)
                                 <tr class="hover:bg-gray-50 dark:hover:bg-gray-700">
                                     <td class="px-4 py-4 whitespace-nowrap">
-                                        <a href="{{ route('quotes.show', $quote) }}" class="text-brand-gold hover:underline font-medium">
+                                        <a href="{{ route('quotes.show', $quote) }}" class="text-blue-600 dark:text-blue-400 hover:underline font-medium">
                                             {{ $quote->quote_number }}
                                         </a>
                                     </td>
@@ -145,10 +145,10 @@
                                         </span>
                                     </td>
                                     <td class="px-4 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                        <a href="{{ route('quotes.show', $quote) }}" class="text-brand-gold hover:text-blue-900 dark:hover:text-blue-300 mr-3">View</a>
+                                        <a href="{{ route('quotes.show', $quote) }}" class="text-blue-600 dark:text-blue-400 hover:text-blue-900 dark:hover:text-blue-300 mr-3">View</a>
                                         @can('update', $quote)
                                             @if($quote->canBeEdited())
-                                                <a href="{{ route('quotes.edit', $quote) }}" class="text-brand-gold hover:text-indigo-900 dark:hover:text-indigo-300">Edit</a>
+                                                <a href="{{ route('quotes.edit', $quote) }}" class="text-indigo-600 dark:text-indigo-400 hover:text-indigo-900 dark:hover:text-indigo-300">Edit</a>
                                             @endif
                                         @endcan
                                     </td>
