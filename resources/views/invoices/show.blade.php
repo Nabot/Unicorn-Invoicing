@@ -2,14 +2,14 @@
     <x-slot name="header">
         <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
             <div>
-                <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+                <h2 class="font-semibold text-xl text-brand-gold leading-tight">
                     Invoice #{{ $invoice->invoice_number }}
                 </h2>
             </div>
             <div class="flex flex-wrap gap-2">
                 @can('update', $invoice)
                     @if($invoice->canBeEdited())
-                        <a href="{{ route('invoices.edit', $invoice) }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition-all hover:shadow-lg flex items-center gap-2">
+                        <a href="{{ route('invoices.edit', $invoice) }}" class="bg-brand-gold hover:bg-brand-gold-light text-brand-black text-white font-bold py-2 px-4 rounded transition-all hover:shadow-lg flex items-center gap-2">
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
                             </svg>
@@ -21,7 +21,7 @@
                     @if($invoice->status->value === 'draft')
                         <form method="POST" action="{{ route('invoices.issue', $invoice) }}" class="inline">
                             @csrf
-                            <button type="submit" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded transition-all hover:shadow-lg flex items-center gap-2">
+                            <button type="submit" class="bg-brand-gold hover:bg-brand-gold-light text-brand-black text-white font-bold py-2 px-4 rounded transition-all hover:shadow-lg flex items-center gap-2">
                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                                 </svg>
@@ -34,7 +34,7 @@
                     @if($invoice->status->value !== 'void' && $invoice->status->value !== 'paid')
                         <form method="POST" action="{{ route('invoices.void', $invoice) }}" class="inline" onsubmit="return confirm('Are you sure you want to void this invoice?');">
                             @csrf
-                            <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded transition-all hover:shadow-lg flex items-center gap-2">
+                            <button type="submit" class="bg-brand-black hover:bg-gray-800 text-brand-gold border border-brand-gold text-white font-bold py-2 px-4 rounded transition-all hover:shadow-lg flex items-center gap-2">
                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
                                 </svg>
@@ -55,7 +55,7 @@
                         <form method="POST" action="{{ route('invoices.destroy', $invoice) }}" class="inline" onsubmit="return confirm('Are you sure you want to delete this invoice? This action cannot be undone.');">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="bg-red-600 hover:bg-red-800 text-white font-bold py-2 px-4 rounded transition-all hover:shadow-lg flex items-center gap-2">
+                            <button type="submit" class="bg-brand-black hover:bg-gray-800 text-brand-gold border border-brand-gold text-white font-bold py-2 px-4 rounded transition-all hover:shadow-lg flex items-center gap-2">
                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
                                 </svg>
@@ -64,7 +64,7 @@
                         </form>
                     @endif
                 @endif
-                <a href="{{ route('invoices.download.pdf', $invoice) }}" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded transition-all hover:shadow-lg flex items-center gap-2">
+                <a href="{{ route('invoices.download.pdf', $invoice) }}" class="bg-brand-black hover:bg-gray-800 text-brand-gold border border-brand-gold text-white font-bold py-2 px-4 rounded transition-all hover:shadow-lg flex items-center gap-2">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
                     </svg>
@@ -102,7 +102,7 @@
                             <p class="mb-2"><strong>Status:</strong> 
                                 <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold 
                                     @if($invoice->status->value === 'draft') bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-200
-                                    @elseif($invoice->status->value === 'issued') bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200
+                                    @elseif($invoice->status->value === 'issued') bg-brand-gold/20 text-brand-gold border border-brand-gold
                                     @elseif($invoice->status->value === 'partially_paid') bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200
                                     @elseif($invoice->status->value === 'paid') bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200
                                     @else bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200
@@ -189,7 +189,7 @@
                         <h3 class="text-lg font-semibold">Payments</h3>
                         @can('create', App\Models\Payment::class)
                             @if($invoice->status->value !== 'void' && $invoice->status->value !== 'paid')
-                                <a href="{{ route('payments.create', $invoice) }}" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded transition-all hover:shadow-lg flex items-center gap-2">
+                                <a href="{{ route('payments.create', $invoice) }}" class="bg-brand-gold hover:bg-brand-gold-light text-brand-black text-white font-bold py-2 px-4 rounded transition-all hover:shadow-lg flex items-center gap-2">
                                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
                                     </svg>
@@ -221,7 +221,7 @@
                                         <td class="px-4 py-2">{{ $payment->recorder->name }}</td>
                                         <td class="px-4 py-2">
                                             @can('update', $payment)
-                                                <a href="{{ route('payments.edit', [$invoice, $payment]) }}" class="text-blue-600 hover:text-blue-800">Edit</a>
+                                                <a href="{{ route('payments.edit', [$invoice, $payment]) }}" class="text-brand-gold hover:text-brand-gold-light">Edit</a>
                                             @endcan
                                             @can('delete', $payment)
                                                 <form method="POST" action="{{ route('payments.destroy', [$invoice, $payment]) }}" class="inline" onsubmit="return confirm('Are you sure?');">
@@ -244,7 +244,7 @@
                             <p class="text-gray-400 dark:text-gray-500 text-sm mb-4">Record a payment to track invoice payments</p>
                             @can('create', App\Models\Payment::class)
                                 @if($invoice->status->value !== 'void' && $invoice->status->value !== 'paid')
-                                    <a href="{{ route('payments.create', $invoice) }}" class="inline-block bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+                                    <a href="{{ route('payments.create', $invoice) }}" class="inline-block bg-brand-gold hover:bg-brand-gold-light text-brand-black text-white font-bold py-2 px-4 rounded">
                                         Record First Payment
                                     </a>
                                 @endif

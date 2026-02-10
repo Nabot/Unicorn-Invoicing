@@ -2,14 +2,14 @@
     <x-slot name="header">
         <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
             <div>
-                <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+                <h2 class="font-semibold text-xl text-brand-gold leading-tight">
                     Quote #{{ $quote->quote_number }}
                 </h2>
             </div>
             <div class="flex flex-wrap gap-2">
                 @can('update', $quote)
                     @if($quote->canBeEdited())
-                        <a href="{{ route('quotes.edit', $quote) }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition-all hover:shadow-lg flex items-center gap-2">
+                        <a href="{{ route('quotes.edit', $quote) }}" class="bg-brand-gold hover:bg-brand-gold-light text-brand-black text-white font-bold py-2 px-4 rounded transition-all hover:shadow-lg flex items-center gap-2">
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
                             </svg>
@@ -20,7 +20,7 @@
                 @if($quote->status->value === 'draft')
                     <form method="POST" action="{{ route('quotes.send', $quote) }}" class="inline">
                         @csrf
-                        <button type="submit" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded transition-all hover:shadow-lg flex items-center gap-2">
+                        <button type="submit" class="bg-brand-gold hover:bg-brand-gold-light text-brand-black text-white font-bold py-2 px-4 rounded transition-all hover:shadow-lg flex items-center gap-2">
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
                             </svg>
@@ -31,13 +31,13 @@
                 @if($quote->status->value === 'sent')
                     <form method="POST" action="{{ route('quotes.accept', $quote) }}" class="inline">
                         @csrf
-                        <button type="submit" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded transition-all hover:shadow-lg flex items-center gap-2">
+                        <button type="submit" class="bg-brand-gold hover:bg-brand-gold-light text-brand-black text-white font-bold py-2 px-4 rounded transition-all hover:shadow-lg flex items-center gap-2">
                             Accept
                         </button>
                     </form>
                     <form method="POST" action="{{ route('quotes.reject', $quote) }}" class="inline">
                         @csrf
-                        <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded transition-all hover:shadow-lg flex items-center gap-2">
+                        <button type="submit" class="bg-brand-black hover:bg-gray-800 text-brand-gold border border-brand-gold text-white font-bold py-2 px-4 rounded transition-all hover:shadow-lg flex items-center gap-2">
                             Reject
                         </button>
                     </form>
@@ -49,7 +49,7 @@
                             <input type="date" name="due_date" value="{{ now()->addDays(30)->format('Y-m-d') }}" required
                                    class="border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 rounded-md py-2 px-3"
                                    min="{{ now()->format('Y-m-d') }}">
-                            <button type="submit" class="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded transition-all hover:shadow-lg flex items-center gap-2">
+                            <button type="submit" class="bg-brand-gold hover:bg-brand-gold-light text-brand-black text-white font-bold py-2 px-4 rounded transition-all hover:shadow-lg flex items-center gap-2">
                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                                 </svg>
@@ -59,11 +59,11 @@
                     </form>
                 @endif
                 @if($quote->invoice)
-                    <a href="{{ route('invoices.show', $quote->invoice) }}" class="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded transition-all hover:shadow-lg flex items-center gap-2">
+                    <a href="{{ route('invoices.show', $quote->invoice) }}" class="bg-brand-gold hover:bg-brand-gold-light text-brand-black text-white font-bold py-2 px-4 rounded transition-all hover:shadow-lg flex items-center gap-2">
                         View Invoice
                     </a>
                 @endif
-                <a href="{{ route('quotes.download.pdf', $quote) }}" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded transition-all hover:shadow-lg flex items-center gap-2">
+                <a href="{{ route('quotes.download.pdf', $quote) }}" class="bg-brand-black hover:bg-gray-800 text-brand-gold border border-brand-gold text-white font-bold py-2 px-4 rounded transition-all hover:shadow-lg flex items-center gap-2">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
                     </svg>
@@ -73,7 +73,7 @@
                     <form method="POST" action="{{ route('quotes.destroy', $quote) }}" class="inline" onsubmit="return confirm('Are you sure you want to delete this quote? This action cannot be undone.');">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="bg-red-600 hover:bg-red-800 text-white font-bold py-2 px-4 rounded transition-all hover:shadow-lg flex items-center gap-2">
+                        <button type="submit" class="bg-brand-black hover:bg-gray-800 text-brand-gold border border-brand-gold text-white font-bold py-2 px-4 rounded transition-all hover:shadow-lg flex items-center gap-2">
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
                             </svg>
@@ -113,7 +113,7 @@
                             <p class="mb-2"><strong>Status:</strong> 
                                 <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold 
                                     @if($quote->status->value === 'draft') bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-200
-                                    @elseif($quote->status->value === 'sent') bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200
+                                    @elseif($quote->status->value === 'sent') bg-brand-gold/20 text-brand-gold border border-brand-gold
                                     @elseif($quote->status->value === 'accepted') bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200
                                     @elseif($quote->status->value === 'rejected') bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200
                                     @else bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200

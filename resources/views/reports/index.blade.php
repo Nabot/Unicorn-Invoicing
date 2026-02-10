@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+        <h2 class="font-semibold text-xl text-brand-gold leading-tight">
             {{ __('Reports') }}
         </h2>
     </x-slot>
@@ -15,7 +15,7 @@
                         <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">
                             View sales totals, VAT, and payment summaries by date range.
                         </p>
-                        <a href="{{ route('reports.sales-summary') }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded inline-block">
+                        <a href="{{ route('reports.sales-summary') }}" class="bg-brand-gold hover:bg-brand-gold-light text-brand-black text-white font-bold py-2 px-4 rounded inline-block">
                             View Sales Summary
                         </a>
                     </div>

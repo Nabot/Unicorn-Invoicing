@@ -65,7 +65,7 @@
                         <div class="mb-6">
                             <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-2 gap-2">
                                 <label class="block text-sm font-medium">Quote Items *</label>
-                                <button type="button" onclick="addItem()" class="bg-green-500 hover:bg-green-700 text-white text-sm font-bold py-2 px-4 rounded">
+                                <button type="button" onclick="addItem()" class="bg-brand-gold hover:bg-brand-gold-light text-brand-black text-white text-sm font-bold py-2 px-4 rounded">
                                     + Add Item
                                 </button>
                             </div>
@@ -153,7 +153,7 @@
 
                         <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-end gap-3">
                             <a href="{{ route('quotes.show', $quote) }}" class="text-center text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 py-2 px-4 rounded">Cancel</a>
-                            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                            <button type="submit" class="bg-brand-gold hover:bg-brand-gold-light text-brand-black text-white font-bold py-2 px-4 rounded">
                                 Update Quote
                             </button>
                         </div>

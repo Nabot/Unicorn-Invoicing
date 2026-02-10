@@ -68,7 +68,7 @@
 
                         <div class="flex items-center justify-end">
                             <a href="{{ route('invoices.show', $invoice) }}" class="mr-4 text-gray-600 hover:text-gray-800">Cancel</a>
-                            <button type="submit" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+                            <button type="submit" class="bg-brand-gold hover:bg-brand-gold-light text-brand-black text-white font-bold py-2 px-4 rounded">
                                 Record Payment
                             </button>
                         </div>

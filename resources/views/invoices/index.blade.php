@@ -2,7 +2,7 @@
     <x-slot name="header">
         <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
             <div>
-                <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+                <h2 class="font-semibold text-xl text-brand-gold leading-tight">
                     {{ __('Invoices') }}
                 </h2>
             </div>
@@ -21,8 +21,8 @@
                                 <p class="text-xs font-medium text-gray-500 dark:text-gray-400">Total Invoices</p>
                                 <p class="text-2xl font-semibold text-gray-900 dark:text-gray-100">{{ number_format($stats['totalInvoices']) }}</p>
                             </div>
-                            <div class="bg-blue-100 dark:bg-blue-900 rounded-full p-3">
-                                <svg class="w-6 h-6 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <div class="bg-brand-gold/20 rounded-full p-3">
+                                <svg class="w-6 h-6 text-brand-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
                                 </svg>
                             </div>
@@ -38,8 +38,8 @@
                                 <p class="text-xs font-medium text-gray-500 dark:text-gray-400">Total Revenue</p>
                                 <p class="text-2xl font-semibold text-gray-900 dark:text-gray-100">{{ format_currency($stats['totalRevenue']) }}</p>
                             </div>
-                            <div class="bg-green-100 dark:bg-green-900 rounded-full p-3">
-                                <svg class="w-6 h-6 text-green-600 dark:text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <div class="bg-brand-gold/20 rounded-full p-3">
+                                <svg class="w-6 h-6 text-brand-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                                 </svg>
                             </div>
@@ -55,8 +55,8 @@
                                 <p class="text-xs font-medium text-gray-500 dark:text-gray-400">Outstanding</p>
                                 <p class="text-2xl font-semibold text-gray-900 dark:text-gray-100">{{ format_currency($stats['outstandingBalance']) }}</p>
                             </div>
-                            <div class="bg-yellow-100 dark:bg-yellow-900 rounded-full p-3">
-                                <svg class="w-6 h-6 text-yellow-600 dark:text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <div class="bg-brand-gold/20 rounded-full p-3">
+                                <svg class="w-6 h-6 text-brand-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                                 </svg>
                             </div>
@@ -70,10 +70,10 @@
                         <div class="flex items-center justify-between">
                             <div>
                                 <p class="text-xs font-medium text-gray-500 dark:text-gray-400">Overdue</p>
-                                <p class="text-2xl font-semibold {{ $stats['overdueCount'] > 0 ? 'text-red-600 dark:text-red-400' : 'text-gray-900 dark:text-gray-100' }}">{{ number_format($stats['overdueCount']) }}</p>
+                                <p class="text-2xl font-semibold {{ $stats['overdueCount'] > 0 ? 'text-brand-gold' : 'text-gray-900 dark:text-gray-100' }}">{{ number_format($stats['overdueCount']) }}</p>
                             </div>
-                            <div class="bg-red-100 dark:bg-red-900 rounded-full p-3">
-                                <svg class="w-6 h-6 text-red-600 dark:text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <div class="bg-brand-black/20 border border-brand-gold rounded-full p-3">
+                                <svg class="w-6 h-6 text-brand-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
                                 </svg>
                             </div>
@@ -94,8 +94,8 @@
                                     </p>
                                 @endif
                             </div>
-                            <div class="bg-purple-100 dark:bg-purple-900 rounded-full p-3">
-                                <svg class="w-6 h-6 text-purple-600 dark:text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <div class="bg-brand-gold/20 rounded-full p-3">
+                                <svg class="w-6 h-6 text-brand-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
                                 </svg>
                             </div>
@@ -111,8 +111,8 @@
                                 <p class="text-xs font-medium text-gray-500 dark:text-gray-400">Avg Value</p>
                                 <p class="text-2xl font-semibold text-gray-900 dark:text-gray-100">{{ format_currency($stats['avgInvoiceValue']) }}</p>
                             </div>
-                            <div class="bg-indigo-100 dark:bg-indigo-900 rounded-full p-3">
-                                <svg class="w-6 h-6 text-indigo-600 dark:text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <div class="bg-brand-gold/20 rounded-full p-3">
+                                <svg class="w-6 h-6 text-brand-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
                                 </svg>
                             </div>
@@ -127,25 +127,25 @@
                     <!-- Quick Filter Buttons -->
                     <div class="mb-4">
                         <div class="flex flex-wrap gap-2 mb-4">
-                            <a href="{{ route('invoices.index') }}" class="px-4 py-2 rounded-md text-sm font-medium transition-colors {{ !request()->has('filter') && !request()->has('status') ? 'bg-blue-500 text-white' : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600' }}">
+                            <a href="{{ route('invoices.index') }}" class="px-4 py-2 rounded-md text-sm font-medium transition-colors {{ !request()->has('filter') && !request()->has('status') ? 'bg-brand-gold text-brand-black' : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600' }}">
                                 All
                             </a>
-                            <a href="{{ route('invoices.index', ['filter' => 'draft']) }}" class="px-4 py-2 rounded-md text-sm font-medium transition-colors {{ request('filter') === 'draft' ? 'bg-blue-500 text-white' : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600' }}">
+                            <a href="{{ route('invoices.index', ['filter' => 'draft']) }}" class="px-4 py-2 rounded-md text-sm font-medium transition-colors {{ request('filter') === 'draft' ? 'bg-brand-gold text-brand-black' : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600' }}">
                                 Draft
                             </a>
-                            <a href="{{ route('invoices.index', ['filter' => 'issued']) }}" class="px-4 py-2 rounded-md text-sm font-medium transition-colors {{ request('filter') === 'issued' ? 'bg-blue-500 text-white' : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600' }}">
+                            <a href="{{ route('invoices.index', ['filter' => 'issued']) }}" class="px-4 py-2 rounded-md text-sm font-medium transition-colors {{ request('filter') === 'issued' ? 'bg-brand-gold text-brand-black' : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600' }}">
                                 Issued
                             </a>
-                            <a href="{{ route('invoices.index', ['filter' => 'overdue']) }}" class="px-4 py-2 rounded-md text-sm font-medium transition-colors {{ request('filter') === 'overdue' ? 'bg-red-500 text-white' : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600' }}">
+                            <a href="{{ route('invoices.index', ['filter' => 'overdue']) }}" class="px-4 py-2 rounded-md text-sm font-medium transition-colors {{ request('filter') === 'overdue' ? 'bg-brand-black text-brand-gold border border-brand-gold' : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600' }}">
                                 Overdue
                             </a>
-                            <a href="{{ route('invoices.index', ['filter' => 'due_soon']) }}" class="px-4 py-2 rounded-md text-sm font-medium transition-colors {{ request('filter') === 'due_soon' ? 'bg-yellow-500 text-white' : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600' }}">
+                            <a href="{{ route('invoices.index', ['filter' => 'due_soon']) }}" class="px-4 py-2 rounded-md text-sm font-medium transition-colors {{ request('filter') === 'due_soon' ? 'bg-brand-gold text-brand-black' : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600' }}">
                                 Due Soon
                             </a>
-                            <a href="{{ route('invoices.index', ['date_preset' => 'this_month']) }}" class="px-4 py-2 rounded-md text-sm font-medium transition-colors {{ request('date_preset') === 'this_month' ? 'bg-blue-500 text-white' : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600' }}">
+                            <a href="{{ route('invoices.index', ['date_preset' => 'this_month']) }}" class="px-4 py-2 rounded-md text-sm font-medium transition-colors {{ request('date_preset') === 'this_month' ? 'bg-brand-gold text-brand-black' : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600' }}">
                                 This Month
                             </a>
-                            <a href="{{ route('invoices.index', ['filter' => 'unpaid']) }}" class="px-4 py-2 rounded-md text-sm font-medium transition-colors {{ request('filter') === 'unpaid' ? 'bg-blue-500 text-white' : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600' }}">
+                            <a href="{{ route('invoices.index', ['filter' => 'unpaid']) }}" class="px-4 py-2 rounded-md text-sm font-medium transition-colors {{ request('filter') === 'unpaid' ? 'bg-brand-gold text-brand-black' : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600' }}">
                                 Unpaid
                             </a>
                         </div>
@@ -213,7 +213,7 @@
                             </div>
 
                             <!-- Filter Button -->
-                            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition-colors flex items-center gap-2 whitespace-nowrap">
+                            <button type="submit" class="bg-brand-gold hover:bg-brand-gold-light text-brand-black text-white font-bold py-2 px-4 rounded transition-colors flex items-center gap-2 whitespace-nowrap">
                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"></path>
                                 </svg>
@@ -260,7 +260,7 @@
                     <!-- New Invoice Button -->
                     <div class="mb-4 flex justify-end">
                         @can('create', App\Models\Invoice::class)
-                            <a href="{{ route('invoices.create') }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-sm touch-manipulation transition-all hover:shadow-lg flex items-center gap-2">
+                            <a href="{{ route('invoices.create') }}" class="bg-brand-gold hover:bg-brand-gold-light text-brand-black text-white font-bold py-2 px-4 rounded text-sm touch-manipulation transition-all hover:shadow-lg flex items-center gap-2">
                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
                                 </svg>
@@ -359,9 +359,9 @@
                                         <td class="px-6 py-4 whitespace-nowrap">
                                             <div class="text-gray-900 dark:text-gray-100 font-medium">{{ $invoice->due_date->format('Y-m-d') }}</div>
                                             @if($isOverdue)
-                                                <div class="text-xs text-red-600 dark:text-red-400 font-semibold">{{ $daysOverdue }} day{{ $daysOverdue != 1 ? 's' : '' }} overdue</div>
+                                                <div class="text-xs text-brand-gold font-semibold">{{ $daysOverdue }} day{{ $daysOverdue != 1 ? 's' : '' }} overdue</div>
                                             @elseif($invoice->due_date <= now()->addDays(7) && in_array($invoice->status->value, ['issued', 'partially_paid']))
-                                                <div class="text-xs text-yellow-600 dark:text-yellow-400">Due in {{ now()->diffInDays($invoice->due_date) }} day{{ now()->diffInDays($invoice->due_date) != 1 ? 's' : '' }}</div>
+                                                <div class="text-xs text-brand-gold">Due in {{ now()->diffInDays($invoice->due_date) }} day{{ now()->diffInDays($invoice->due_date) != 1 ? 's' : '' }}</div>
                                             @endif
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap font-semibold text-gray-900 dark:text-gray-100">
@@ -383,7 +383,7 @@
                                             @php
                                                 $statusColor = match($invoice->status->value) {
                                                     'draft' => 'bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-200',
-                                                    'issued' => 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200',
+                                                    'issued' => 'bg-brand-gold/20 text-brand-gold border border-brand-gold',
                                                     'partially_paid' => 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200',
                                                     'paid' => 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200',
                                                     'void' => 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200',
@@ -441,7 +441,7 @@
                                                 <p class="text-gray-500 dark:text-gray-400 text-lg font-medium mb-2">No invoices found</p>
                                                 <p class="text-gray-400 dark:text-gray-500 text-sm mb-4">Try adjusting your filters or create a new invoice</p>
                                                 @can('create', App\Models\Invoice::class)
-                                                    <a href="{{ route('invoices.create') }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                                                    <a href="{{ route('invoices.create') }}" class="bg-brand-gold hover:bg-brand-gold-light text-brand-black text-white font-bold py-2 px-4 rounded">
                                                         Create Your First Invoice
                                                     </a>
                                                 @endcan

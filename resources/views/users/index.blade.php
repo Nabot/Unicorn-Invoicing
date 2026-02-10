@@ -2,13 +2,13 @@
     <x-slot name="header">
         <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
             <div>
-                <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+                <h2 class="font-semibold text-xl text-brand-gold leading-tight">
                     {{ __('Users') }}
                 </h2>
             </div>
             @if($canAddMore)
                 <a href="{{ route('users.create') }}" 
-                   class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-sm touch-manipulation transition-all hover:shadow-lg flex items-center gap-2">
+                   class="bg-brand-gold hover:bg-brand-gold-light text-brand-black text-white font-bold py-2 px-4 rounded text-sm touch-manipulation transition-all hover:shadow-lg flex items-center gap-2">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
                     </svg>
@@ -76,7 +76,7 @@
                     <div class="mb-4 flex justify-end">
                         @if($canAddMore)
                             <a href="{{ route('users.create') }}" 
-                               class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-sm touch-manipulation transition-all hover:shadow-lg flex items-center gap-2">
+                               class="bg-brand-gold hover:bg-brand-gold-light text-brand-black text-white font-bold py-2 px-4 rounded text-sm touch-manipulation transition-all hover:shadow-lg flex items-center gap-2">
                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
                                 </svg>
@@ -133,7 +133,7 @@
                                     <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
                                         <td class="px-6 py-4 whitespace-nowrap">
                                             <div class="flex items-center">
-                                                <div class="flex-shrink-0 h-10 w-10 rounded-full bg-blue-500 flex items-center justify-center text-white font-semibold">
+                                                <div class="flex-shrink-0 h-10 w-10 rounded-full bg-brand-gold flex items-center justify-center text-white font-semibold">
                                                     {{ strtoupper(substr($user->name, 0, 1)) }}
                                                 </div>
                                                 <div class="ml-4">
@@ -170,7 +170,7 @@
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                             <div class="flex justify-end gap-2">
-                                                <a href="{{ route('users.edit', $user) }}" class="text-indigo-600 hover:text-indigo-900 dark:text-indigo-400 dark:hover:text-indigo-300">Edit</a>
+                                                <a href="{{ route('users.edit', $user) }}" class="text-brand-gold hover:text-brand-gold-light dark:text-indigo-400 dark:hover:text-indigo-300">Edit</a>
                                                 @if($user->id !== auth()->id())
                                                     <form method="POST" action="{{ route('users.destroy', $user) }}" class="inline" onsubmit="return confirm('Are you sure you want to delete this user? This action cannot be undone.');">
                                                         @csrf
