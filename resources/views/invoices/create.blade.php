@@ -77,6 +77,7 @@
                                         <th class="px-4 py-2 bg-gray-50 dark:bg-gray-700 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase">Description</th>
                                         <th class="px-4 py-2 bg-gray-50 dark:bg-gray-700 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase">Quantity</th>
                                         <th class="px-4 py-2 bg-gray-50 dark:bg-gray-700 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase">Unit Price</th>
+                                        <th class="px-4 py-2 bg-gray-50 dark:bg-gray-700 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase">Discount</th>
                                         <th class="px-4 py-2 bg-gray-50 dark:bg-gray-700 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase">VAT</th>
                                         <th class="px-4 py-2 bg-gray-50 dark:bg-gray-700 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase">Total</th>
                                         <th class="px-4 py-2 bg-gray-50 dark:bg-gray-700 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase">Actions</th>
@@ -87,15 +88,15 @@
                                 </tbody>
                                 <tfoot>
                                     <tr class="border-t-2 border-gray-300 dark:border-gray-600">
-                                        <td colspan="4" class="px-4 py-2 text-right font-semibold">Subtotal:</td>
+                                        <td colspan="5" class="px-4 py-2 text-right font-semibold">Subtotal:</td>
                                         <td colspan="2" class="px-4 py-2 font-semibold" id="subtotal">0.00</td>
                                     </tr>
                                     <tr>
-                                        <td colspan="4" class="px-4 py-2 text-right font-semibold">VAT (15%):</td>
+                                        <td colspan="5" class="px-4 py-2 text-right font-semibold">VAT (15%):</td>
                                         <td colspan="2" class="px-4 py-2 font-semibold" id="vat-total">0.00</td>
                                     </tr>
                                     <tr class="border-t-2 border-gray-300 dark:border-gray-600">
-                                        <td colspan="4" class="px-4 py-2 text-right font-semibold text-lg">Total:</td>
+                                        <td colspan="5" class="px-4 py-2 text-right font-semibold text-lg">Total:</td>
                                         <td colspan="2" class="px-4 py-2 font-semibold text-lg" id="total">0.00</td>
                                     </tr>
                                 </tfoot>

@@ -243,11 +243,21 @@ class InvoiceController extends Controller
     public function store(StoreInvoiceRequest $request): RedirectResponse
     {
         try {
+            $validated = $request->validated();
+            $items = $validated['items'] ?? $request->input('items', []);
+            
+            // Ensure items is an array
+            if (!is_array($items) || empty($items)) {
+                return redirect()->back()
+                    ->withInput()
+                    ->with('error', 'Please add at least one item to the invoice.');
+            }
+            
             $invoice = $this->invoiceService->createDraft(
                 $request->user()->company_id,
                 $request->user()->id,
-                $request->validated(),
-                $request->items
+                $validated,
+                $items
             );
 
             // Clear cache
@@ -255,17 +265,27 @@ class InvoiceController extends Controller
 
             return redirect()->route('invoices.show', $invoice)
                 ->with('success', 'Invoice created successfully.');
+        } catch (\Illuminate\Validation\ValidationException $e) {
+            // Re-throw validation exceptions so Laravel handles them properly
+            throw $e;
         } catch (\Exception $e) {
             \Log::error('Invoice creation failed', [
                 'user_id' => $request->user()->id,
                 'company_id' => $request->user()->company_id,
                 'error' => $e->getMessage(),
-                'trace' => $e->getTraceAsString()
+                'trace' => $e->getTraceAsString(),
+                'file' => $e->getFile(),
+                'line' => $e->getLine(),
             ]);
+
+            // Show more specific error in development, generic in production
+            $errorMessage = config('app.debug') 
+                ? 'Failed to create invoice: ' . $e->getMessage()
+                : 'Failed to create invoice. Please check your input and try again.';
 
             return redirect()->back()
                 ->withInput()
-                ->with('error', 'Failed to create invoice. Please try again.');
+                ->with('error', $errorMessage);
         }
     }
 

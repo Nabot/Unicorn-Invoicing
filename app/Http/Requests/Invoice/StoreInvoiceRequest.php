@@ -34,6 +34,7 @@ class StoreInvoiceRequest extends FormRequest
             'items.*.description' => ['required', 'string', 'max:255'],
             'items.*.quantity' => ['required', 'numeric', 'min:0.01', 'max:999999.99'],
             'items.*.unit_price' => ['required', 'numeric', 'min:0', 'max:999999.99'],
+            'items.*.discount' => ['sometimes', 'nullable', 'numeric', 'min:0', 'max:999999.99'],
             'items.*.vat_applicable' => ['sometimes', 'boolean'],
         ];
     }
@@ -63,6 +64,9 @@ class StoreInvoiceRequest extends FormRequest
             'items.*.unit_price.numeric' => 'Unit price must be a valid number.',
             'items.*.unit_price.min' => 'Unit price cannot be negative.',
             'items.*.unit_price.max' => 'Unit price cannot exceed 999,999.99.',
+            'items.*.discount.numeric' => 'Discount must be a valid number.',
+            'items.*.discount.min' => 'Discount cannot be negative.',
+            'items.*.discount.max' => 'Discount cannot exceed 999,999.99.',
             'notes.max' => 'Notes cannot exceed 1000 characters.',
             'terms.max' => 'Terms cannot exceed 1000 characters.',
         ];

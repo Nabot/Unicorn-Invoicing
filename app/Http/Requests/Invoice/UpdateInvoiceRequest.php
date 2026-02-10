@@ -30,6 +30,7 @@ class UpdateInvoiceRequest extends FormRequest
             'items.*.description' => ['required', 'string', 'max:255'],
             'items.*.quantity' => ['required', 'numeric', 'min:0.01'],
             'items.*.unit_price' => ['required', 'numeric', 'min:0'],
+            'items.*.discount' => ['sometimes', 'nullable', 'numeric', 'min:0'],
             'items.*.vat_applicable' => ['sometimes', 'boolean'],
         ];
     }
